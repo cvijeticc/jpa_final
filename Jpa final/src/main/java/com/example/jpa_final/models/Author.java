@@ -1,13 +1,18 @@
 package com.example.jpa_final.models;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
+@Builder
 @Entity
 public class Author {
 
@@ -28,8 +33,10 @@ public class Author {
 
     private int age;
 
+    @CreationTimestamp
     @Column(
-            updatable = false, nullable = false
+            updatable = false,
+            nullable = false
     )
     private LocalDateTime createdAt;
 
