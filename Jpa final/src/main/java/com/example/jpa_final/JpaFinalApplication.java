@@ -16,7 +16,7 @@ public class JpaFinalApplication {
         SpringApplication.run(JpaFinalApplication.class, args);
     }
 
-    //@Bean
+    @Bean
     public CommandLineRunner commandLineRunner(
             AuthorRepository repository,
             VideoRepository videoRepository
