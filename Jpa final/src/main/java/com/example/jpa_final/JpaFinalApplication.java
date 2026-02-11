@@ -27,28 +27,39 @@ public class JpaFinalApplication {
     ) {
 
         return args -> {
-//            for (int i = 0; i < 50; i++) {
-//                Faker faker = new Faker();
-//                var author = Author.builder()
-//                    .firstName(faker.name().firstName())
-//                    .lastName(faker.name().lastName())
-//                    .age(faker.number().numberBetween(19,50))
-//                    .email("primer"+i+"@gmail.com")
-//                    .build();
-//            repository.save(author);
-//            }
+            for (int i = 0; i < 50; i++) {
+                Faker faker = new Faker();
+                var author = Author.builder()
+                    .firstName(faker.name().firstName())
+                    .lastName(faker.name().lastName())
+                    .age(faker.number().numberBetween(19,50))
+                    .email(faker.name().username()+"@gmail.com")
+                    .build();
+            repository.save(author);
+            }
 //            var video = Video.builder()
 //                    .name("abc")
 //                    .length(5)
 //                    .build();
 //            videoRepository.save(video);
-            List<String> names = new ArrayList<>();
-            names.add("Carolee");
-            names.add("Charolette");
-            names.add("Rolland");
-            repository.findAllByFirstNameInIgnoreCase(names)
-                        .forEach(System.out::println);
 
+//            var author = Author.builder()
+//                    .id(1)
+//                    .firstName("Andrija")
+//                    .lastName("Cvijetic")
+//                    .age(95)
+//                    .email("andr@gmail.com")
+//                    .build();
+//            repository.save(author);
+                //repository.updateAllAuthorsAge(99);
+//            List<String> names = new ArrayList<>();
+//            names.add("Carolee");
+//            names.add("Charolette");
+//            names.add("Rolland");
+//            repository.findAllByFirstNameInIgnoreCase(names)
+//                        .forEach(System.out::println);
+            repository.findByNamedQuery(46)
+                    .forEach(System.out::println);
         };
 
     }

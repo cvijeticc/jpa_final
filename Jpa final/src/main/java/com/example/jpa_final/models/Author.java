@@ -15,6 +15,10 @@ import java.util.List;
 @SuperBuilder
 @Entity
 @ToString(exclude = "courses")
+@NamedQuery(
+        name = "Author.findByNamedQuery",
+        query = "select a from Author a where a.age >= :age"
+)
 public class Author extends BaseEntity{
 
 
