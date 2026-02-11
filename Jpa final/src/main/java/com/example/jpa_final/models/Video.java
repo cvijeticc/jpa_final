@@ -17,6 +17,8 @@ import lombok.experimental.SuperBuilder;
 @Entity
 //@PrimaryKeyJoinColumn(name = "video_id")
 //@DiscriminatorValue("V")
+//@Polymorphism(type = PolymorphismType.EXPLICIT)
+//ali ovo gore ne moze jer je to za stariji hibernate
 public class Video extends Resource {
     private int length;
 }

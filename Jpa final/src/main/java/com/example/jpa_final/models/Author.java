@@ -14,6 +14,7 @@ import java.util.List;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
+@ToString(exclude = "courses")
 public class Author extends BaseEntity{
 
 
