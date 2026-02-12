@@ -14,11 +14,20 @@ import java.util.List;
 @AllArgsConstructor
 @SuperBuilder
 @Entity
-@ToString(exclude = "courses")
-@NamedQuery(
-        name = "Author.findByNamedQuery",
-        query = "select a from Author a where a.age >= :age"
+@NamedQueries(
+        {
+            @NamedQuery(
+            name = "Author.findByNamedQuery",
+            query = "select a from Author a where a.age >= :age"
+                        ),
+        @NamedQuery(
+                name = "Author.updateByNamedQuery",
+                query = "update Author a set a.age = :age"
+        )
+}
 )
+@ToString(exclude = "courses")
+
 public class Author extends BaseEntity{
 
 

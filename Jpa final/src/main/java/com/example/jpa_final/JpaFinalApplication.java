@@ -4,11 +4,13 @@ import com.example.jpa_final.models.Author;
 import com.example.jpa_final.models.Video;
 import com.example.jpa_final.repositories.AuthorRepository;
 import com.example.jpa_final.repositories.VideoRepository;
+import com.example.jpa_final.specification.AuthorSpecification;
 import com.github.javafaker.Faker;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.data.jpa.domain.Specification;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,7 +37,7 @@ public class JpaFinalApplication {
                     .age(faker.number().numberBetween(19,50))
                     .email(faker.name().username()+"@gmail.com")
                     .build();
-            repository.save(author);
+            //repository.save(author);
             }
 //            var video = Video.builder()
 //                    .name("abc")
@@ -58,9 +60,17 @@ public class JpaFinalApplication {
 //            names.add("Rolland");
 //            repository.findAllByFirstNameInIgnoreCase(names)
 //                        .forEach(System.out::println);
-            repository.findByNamedQuery(46)
-                    .forEach(System.out::println);
+            //find by named query
+            //repository.findByNamedQuery(46)
+                    //.forEach(System.out::println);
+            //update with named query
+            //repository.updateByNamedQuery(12);
+            Specification<Author> spec = Specification
+                    .where(AuthorSpecification.hasAge(37))
+                    .or(AuthorSpecification.firstNameLike("El"));
+            repository.findAll(spec).forEach(System.out::println);
         };
+
 
     }
 }
